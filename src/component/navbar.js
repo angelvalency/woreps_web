@@ -20,92 +20,77 @@ export default function Navbar() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mx-32">
-            <div className="flex flex-col items-center justify-center">
-                {/* Navbar Wrapper */}
-                <nav className="fixed top-4 w-3/4 flex items-center justify-between px-8 bg-gray-100/2 backdrop-blur-sm z-50 rounded-3xl shadow-sm">
-                    <img src="./assets/image/logo_baru.svg" alt="woreps logo" className="w-32 h-18" />
+        <div className="flex flex-col items-center justify-center sm:mx-8 md:mx-32">
+            {/* Navbar Wrapper */}
+            <nav className={`fixed md:top-4 top-2 w-11/12 sm:w-11/12 max-w-3xl flex items-center justify-between px-4 sm:px-8 py-3 
+            bg-gray-100/20 backdrop-blur-sm z-50 rounded-t-3xl
+            ${isSidebarOpen ? "rounded-b-none shadow-none" : "rounded-3xl shadow-sm"}`}>
+            
+                <img src="./assets/image/logo_baru.svg" alt="woreps logo" className="w-24 sm:w-32 h-auto" />
 
-                    {/* Desktop Navbar */}
-                    <div className="hidden md:flex space-x-4 mx-8">
-                        <button
-                            onClick={() => scrollToSection("home")}
-                            className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                            ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}
-                        `}
-                        >
-                            Beranda
-                        </button>
-                        <button
-                            onClick={() => scrollToSection("about")}
-                            className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                            ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}
-                        `}
-                        >
-                            Tentang
-                        </button>
-                        <button
-                            onClick={() => scrollToSection("fiture")}
-                            className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                            ${activeButton === "fiture" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}
-                        `}
-                        >
-                            Fitur
-                        </button>
-                    </div>
+                {/* Desktop Navbar */}
+                <div className="hidden md:flex space-x-4 mx-8">
+                    <button
+                        onClick={() => scrollToSection("home")}
+                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
+                        ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                    >
+                        Beranda
+                    </button>
+                    <button
+                        onClick={() => scrollToSection("about")}
+                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
+                        ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                    >
+                        Tentang
+                    </button>
+                    <button
+                        onClick={() => scrollToSection("fitur")}
+                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
+                        ${activeButton === "fitur" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                    >
+                        Fitur
+                    </button>
+                </div>
 
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            className="p-2 rounded-3xl bg-orange-300 text-white text-lg font-medium"
-                        >
-                            {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
-                </nav>
+                {/* Mobile Menu Button */}
+                <button
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    className="md:hidden p-2 rounded-full w-10 h-10 flex items-center justify-center bg-orange-300 text-white"
+                >
+                    {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+            </nav>
 
-                {/* Mobile Sidebar */}
-                {isSidebarOpen && (
-                    <div className="fixed inset-0 z-50 flex justify-end">
-                        <div className="w-2/3  max-w-sm bg-white h-full p-6 flex flex-col space-y-4">
-                            {/* Close Button */}
-                            <button
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="self-end text-gray-600"
-                            >
-                                <X size={24} />
-                            </button>
-
-                            {/* Mobile Menu Items */}
+            {/* Mobile Dropdown Menu - Full Width Below Nav */}
+                { isSidebarOpen && (
+                    <div className="fixed top-16 left-0 right-0  w-full flex justify-center z-40 md:hidden animate-fade-in">
+                        <div className="w-11/12 max-w-sm bg-gray-100/20 backdrop-blur-sm rounded-b-3xl shadow-lg overflow-hidden">
                             <button
                                 onClick={() => scrollToSection("home")}
-                                className={`px-6 py-3 rounded-lg transition-all duration-300 font-medium text-left
-                                ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-gray-100 text-gray-600"}
-                            `}
+                                className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
+                ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
                                 Beranda
                             </button>
                             <button
                                 onClick={() => scrollToSection("about")}
-                                className={`px-6 py-3 rounded-md transition-all duration-300 font-medium text-left
-                                ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-gray-100 text-gray-600"}
-                            `}
+                                className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
+                ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
                                 Tentang
                             </button>
                             <button
-                                onClick={() => scrollToSection("faq")}
-                                className={`px-6 py-3 rounded-md transition-all duration-300 font-medium text-left
-                                ${activeButton === "faq" ? "bg-orange-300 text-white" : "bg-gray-100 text-gray-600"}
-                            `}
+                                onClick={() => scrollToSection("fitur")}
+                                className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
+                ${activeButton === "fitur" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
                                 Fitur
                             </button>
                         </div>
                     </div>
                 )}
-            </div>
+
         </div>
     );
 }

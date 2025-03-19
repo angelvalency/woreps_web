@@ -16,7 +16,7 @@ export default function BackToTop() {
     return (
         <div className={`fixed bottom-24 right-4 ${isVisible ? "visible" : "invisible"} transition-all duration-300 ease-in-out`}>
             <button
-                className="bg-orange-50 text-black rounded-full p-2 shadow-md shadow-orange-200 hover:shadow-lg"
+                className="bg-orange-50 text-black rounded-full p-2 shadow-md shadow-orange-200 hover:shadow-lg cursor-pointer"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-arrow-up">
