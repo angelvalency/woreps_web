@@ -78,17 +78,23 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="bg-white flex flex-col min-h-screen w-full px-4 sm:px-6 md:px-10 lg:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main 
+      
+      style={{
+        backgroundImage: "url('./assets/image/contour-line-orange.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "repeat", }}
+        
+      className="bg-white flex flex-col min-h-screen w-full px-4 sm:px-6 md:px-10 lg:p-20 font-[family-name:var(--font-geist-sans)]">
         {/* about */}
         <section className="relative bg-red flex flex-col font-bold text-xl text-black w-full mt-8" id="about">
-          {/* Bunga Atas Kiri */}
           <img
             src="/assets/image/flower-orange-bold.svg"
             alt="flower"
             className="absolute left-0 w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] md:w-[150px] md:h-[150px] lg:w-[200px] lg:h-[200px]"
           />
 
-          {/* Konten Tengah */}
           <div className="flex flex-col items-center justify-center w-full mt-12 md:mt-16">
             <h1 className="font-light text-2xl sm:text-3xl md:text-4xl text-gray-700 text-center">
               Tentang <span className="italic text-orange-300">Woreps, Teman</span>
@@ -101,48 +107,44 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bunga kanan bawah */}
           <img
             src="/assets/image/flower-orange-medium.svg"
             alt="flower"
             className="absolute top-80 md:top-64 right-0 w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] md:w-[150px] md:h-[150px] lg:w-[200px] lg:h-[200px]"
           />
+        </section>
 
-          {/* card col-3 fiture*/}
-          <div className="flex flex-col items-center w-full mt-32 md:mt-64" id="fitur">
-            {/* Container Card */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 md:gap-12 w-full max-w-4xl">
-              {/* Fitur 1 */}
-              <div className="p-3 md:p-4 w-full bg-orange-50 border border-orange-300 flex items-center rounded-3xl">
-                <div className="p-3 md:p-4 rounded-full bg-orange-300"></div>
-                <p className="ml-4 font-light text-sm md:text-base text-gray-700">Fitur 1</p>
-              </div>
+        {/* Feature Section*/}
+        <section id="fitur"
+       
+      
+          className="relative flex flex-col items-center justify-center w-full mt-16 md:mt-24 lg:mt-32 pb-16"
+        >
+          {/* Teks Besar di Atas */}
+          <div className="text-center max-w-2xl px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+              "Dari <span className="text-[#FFA62F]">banyak pilihan latihan</span> hingga <span className="text-[#FFA62F]">pelacakan progres</span>, semuanya ada di satu aplikasi!"
+            </h2>
+          </div>
 
-              {/* Fitur 2 */}
-              <div className="p-3 md:p-4 w-full bg-orange-50 border border-orange-300 flex items-center rounded-3xl">
-                <div className="p-3 md:p-4 rounded-full bg-orange-300"></div>
-                <p className="ml-4 font-light text-sm md:text-base text-gray-700">Fitur 2</p>
-              </div>
-
-              {/* Fitur 3 */}
-              <div className="p-3 md:p-4 w-full bg-orange-50 border border-orange-300 flex items-center rounded-3xl">
-                <div className="p-3 md:p-4 rounded-full bg-orange-300"></div>
-                <p className="ml-4 font-light text-sm md:text-base text-gray-700">Fitur 3</p>
-              </div>
-
-              {/* Fitur 4 */}
-              <div className="p-3 md:p-4 w-full bg-orange-50 border border-orange-300 flex items-center rounded-3xl">
-                <div className="p-3 md:p-4 rounded-full bg-orange-300"></div>
-                <p className="ml-4 font-light text-sm md:text-base text-gray-700">Fitur 4</p>
-              </div>
+          {/* Container HP + Cards */}
+          <div className="relative flex items-center justify-center w-full max-w-5xl mx-auto px-8 mt-16 gap-4">
+            <div className="bg-white shadow-lg rounded-2xl p-6 w-48 min-h-32 flex flex-col items-center text-center border-2 border-[#FFA62F] 
+            transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <img src="/assets/image/list.svg" alt="Icon" className="w-10 h-10" />
+              <p className="text-sm font-medium text-gray-800 mt-2">Banyak pilihan latihan untukmu</p>
             </div>
 
-            {/* Gambar HP */}
-            <img
-              src="/assets/image/slider_review_mobile.svg"
-              alt="mobile"
-              className="mt-10 w-[300px] h-[256px] sm:w-[400px] sm:h-[341px] md:w-[500px] md:h-[427px] lg:w-[600px] lg:h-[512px]"
-            />
+            {/* Screenshot UI (HP) */}
+            <div className="w-full max-w-2xl mx-auto">
+              <img src="/assets/image/iPhone-15.svg" alt="Workout App UI" className="w-full h-auto" />
+            </div>
+
+            <div className="bg-white shadow-lg rounded-2xl p-6 w-48 min-h-32 flex flex-col items-center text-center border-2 border-[#FFA62F] 
+            transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <img src="/assets/image/calendar.svg" alt="Icon" className="w-10 h-10" />
+              <p className="text-sm font-medium text-gray-800 mt-2">Catat latihanmu selama ini</p>
+            </div>
           </div>
         </section>
 
@@ -157,7 +159,6 @@ export default function Home() {
 
           {/* button download */}
           <div className="flex flex-col sm:flex-row justify-center items-center w-full mt-8 md:mt-12 gap-4 sm:gap-8 md:gap-16 lg:gap-32">
-            {/* img flower light */}
             <img
               src="./assets/image/flowers-orange-light.svg"
               alt="flower"
@@ -176,7 +177,6 @@ export default function Home() {
             >
             </button>
 
-            {/* img flower medium */}
             <img
               src="./assets/image/flower-orange-medium.svg"
               alt="flower"
