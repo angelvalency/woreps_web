@@ -91,16 +91,16 @@ export default function Navbar() {
                     <div className="fixed top-18 left-0 right-0  w-full flex justify-center z-40 md:hidden animate-fade-in">
                         <div className="w-11/12 max-w-sm bg-gray-100/20 backdrop-blur-sm rounded-b-3xl shadow-lg overflow-hidden">
                             <button
-                                onClick={() => scrollToSection("home")}
+                                onClick={() => scrollToSection("beranda")}
                                 className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
-                ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
+                ${activeButton === "beranda" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
                                 Beranda
                             </button>
                             <button
-                                onClick={() => scrollToSection("about")}
+                                onClick={() => scrollToSection("tentang")}
                                 className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
-                ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
+                ${activeButton === "tentang" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
                                 Tentang
                             </button>
