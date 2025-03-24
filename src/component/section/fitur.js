@@ -10,9 +10,9 @@ export default function FiturSection() {
                 <br /> Untuk mencapai<span className="italic text-orange-300"> Target Olahraga</span>
             </h1>
 
-            <div className="flex flex-col md:flex-row items-center justify-between w-full md:px-8 lg:px-16  max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full md:px-8 lg:px-16 max-w-7xl mx-auto">
                 {/* Left content - Workout List */}
-                <div className="w-full md:w-1/4 md:mb-32">
+                <div className="w-full md:w-1/4 md:mb-52">
                     <h2 className="text-gray-700 font-semibold text-xl md:text-xl lg:text-2xl mb-4 md:mb-6 mt-2 text-center md:text-start">
                         Workout List
                     </h2>
@@ -45,12 +45,13 @@ export default function FiturSection() {
                 </div>
 
                 {/* Center - Phone Images */}
-                <div className="w-full">
+                <div className="w-full p-16 flex items-center justify-center">
                     <Image
-                        src="/assets/image/phone-preview.svg"
+                        src="/assets/image/mobile-preview.svg"
                         alt="workout app preview"
-                        width={900}
-                        height={900}
+                        width={500}
+                        height={400}
+
                     />
                 </div>
 
