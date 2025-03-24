@@ -5,7 +5,7 @@ import React from "react";
 export default function UnduhSection() {
     return (
         <section className="relative flex flex-col items-center justify-center font-bold text-xl text-black w-full mt-16 md:mt-24" id="unduh">
-            <h1 className="font-light text-2xl sm:text-3xl md:text-4xl text-gray-700 text-center">
+            <h1 className="font-medium text-2xl sm:text-3xl md:text-4xl text-gray-700 text-center">
                 Yuk, mulai<span className="italic text-orange-300"> hidup sehat</span>
                 <br /> Unduh <span className="italic text-orange-300"> Woreps </span>
                 sekarang!

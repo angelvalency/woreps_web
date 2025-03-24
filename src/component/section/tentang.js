@@ -9,7 +9,7 @@ export default function AboutSection() {
       />
 
       <div className="flex flex-col items-center justify-center w-full mt-20 sm:mt-14 md:mt-16 z-10 px-4">
-        <h1 className="font-light text-2xl md:text-3xl lg:text-4xl text-gray-700 text-center">
+        <h1 className="font-medium text-2xl md:text-3xl lg:text-4xl text-gray-700 text-center">
           Tentang <span className="italic text-orange-300">Woreps, Teman</span>
           <br className="sm:hidden md:block" /> <span className="italic text-orange-300">Olahragamu</span>
         </h1>
