@@ -1,23 +1,47 @@
 "use client";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-    const [activeButton, setActiveButton] = useState("home");
+    const [activeButton, setActiveButton] = useState("beranda");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const scrollToSection = (id) => {
         const section = document.getElementById(id);
         if (section) {
-            const offset = -120;
-            const top = section.getBoundingClientRect().top + window.scrollY + offset;
-
+            // Ambil tinggi navbar agar tidak tertutup
+            const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
+            const offset = navbarHeight + 20; // Beri jarak ekstra 20px
+            const top = section.getBoundingClientRect().top + window.scrollY - offset;
+    
+            // Scroll dengan smooth behavior
             window.scrollTo({ top, behavior: "smooth" });
-
+    
+            // Perbarui hash tanpa reload
+            window.history.pushState(null, "", `#${id}`);
+    
             setActiveButton(id);
             setIsSidebarOpen(false);
         }
     };
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash.replace("#", "") || "beranda";
+            setActiveButton(hash);
+        };
+
+        // Cek hash saat first komponen load
+        handleHashChange();
+        
+        // event listener hash
+        window.addEventListener("hashchange", handleHashChange);
+
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+        };
+    }, []);
 
     return (
         <div className="flex flex-col items-center justify-center sm:mx-8 md:mx-32">
@@ -30,33 +54,33 @@ export default function Navbar() {
 
                 {/* Desktop Navbar */}
                 <div className="hidden md:flex space-x-4 mx-8">
-                    <button
-                        onClick={() => scrollToSection("home")}
+                    <a
+                        onClick={() => scrollToSection("beranda")}
                         className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "home" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                        ${activeButton === "beranda" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
                     >
                         Beranda
-                    </button>
-                    <button
-                        onClick={() => scrollToSection("about")}
+                    </a>
+                    <a
+                        onClick={() => scrollToSection("tentang")}
                         className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "about" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                        ${activeButton === "tentang" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
                     >
                         Tentang
-                    </button>
-                    <button
+                    </a>
+                    <a
                         onClick={() => scrollToSection("fitur")}
                         className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "fitur" ? "bg-orange-300 text-white" : "bg-white text-gray-400"}`}
+                        ${activeButton === "fitur" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
                     >
                         Fitur
-                    </button>
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="md:hidden p-2 rounded-full w-10 h-10 flex items-center justify-center bg-orange-300 text-white"
+                    className="md:hidden p-2 w-10 h-10 flex items-center justify-center text-black"
                 >
                     {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
@@ -64,7 +88,7 @@ export default function Navbar() {
 
             {/* Mobile Dropdown Menu - Full Width Below Nav */}
                 { isSidebarOpen && (
-                    <div className="fixed top-16 left-0 right-0  w-full flex justify-center z-40 md:hidden animate-fade-in">
+                    <div className="fixed top-18 left-0 right-0  w-full flex justify-center z-40 md:hidden animate-fade-in">
                         <div className="w-11/12 max-w-sm bg-gray-100/20 backdrop-blur-sm rounded-b-3xl shadow-lg overflow-hidden">
                             <button
                                 onClick={() => scrollToSection("home")}

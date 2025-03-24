@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Stalemate&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 
@@ -22,16 +22,6 @@
   }
 }
 
-.tangerine-regular {
-  font-family: "Tangerine", cursive;
-  font-weight: 400;
-  font-style: normal;
+body {
+  font-family: 'Poppins', sans-serif;
 }
-
-.tangerine-bold {
-  font-family: "Tangerine", cursive;
-  font-weight: 700;
-  font-style: normal;
-}
-
-
