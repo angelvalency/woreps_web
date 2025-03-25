@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/assets/image/woreps.png" type="image/png" />
+        <link rel="icon" href="/assets/image/woreps.jpeg" type="image/jpeg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
