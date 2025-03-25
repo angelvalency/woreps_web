@@ -16,7 +16,7 @@ export default function BerandaSection() {
                     <span className="font-semibold">Dapatkan Hasil Maksimal, Mulai </span>
                     <span className="font-bold text-orange-300">Latihan</span>
                     <span className="font-semibold"> dengan </span>
-                    <span className="font-bold text-orange-300">Woreps</span>
+                    <span className="font-bold text-blue-300">Woreps</span>
                 </h1>
                 <h2 className="text-center text-lg sm:text-xl md:text-3xl text-gray-600 mt-8 font-light">
                     Perubahan dimulai dari sini. <br /> Woreps hadir untuk menjadikan hidupmu lebih sehat dan bugar.

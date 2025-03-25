@@ -17,30 +17,25 @@ export default function FiturSection() {
                         Workout List
                     </h2>
                     <ul className="space-y-6 text-gray-700 font-light text-lg md:text-xl">
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Program workout sesuai kebutuhan</p>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Beragam pilihan latihan</p>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Timer untuk menghitung durasi olahraga</p>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Menghitung kalori terbakar</p>
-                        </li>
+                        {[
+                            "Program workout sesuai kebutuhan",
+                            "Beragam pilihan latihan",
+                            "Timer untuk menghitung durasi olahraga",
+                            "Menghitung kalori terbakar",
+                        ].map((text, index) => (
+                            <li key={index} className="flex items-start gap-3">
+                                <div className="min-w-6 mt-1">
+                                    <Image
+                                        src="/assets/image/check-circle-svgrepo-com.svg"
+                                        alt="check"
+                                        width={24}
+                                        height={24}
+                                        className="w-6 h-6 text-yellow-400"
+                                    />
+                                </div>
+                                <p>{text}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
@@ -51,7 +46,7 @@ export default function FiturSection() {
                         alt="workout app preview"
                         width={500}
                         height={400}
-
+                        priority // Mengoptimalkan loading gambar utama
                     />
                 </div>
 
@@ -61,24 +56,24 @@ export default function FiturSection() {
                         History
                     </h2>
                     <ul className="space-y-6 text-gray-700 font-light text-lg">
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Simpan dan tinjau sesi workout sebelumnya.</p>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Pantau perkembangan latihan dari waktu ke waktu.</p>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <div className="min-w-6 mt-1">
-                                <Image src="/assets/image/check-circle-svgrepo-com.svg" alt="check" width={24} height={24} className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <p>Riwayat rata-rata durasi latihan, intensitas, dan kalori terbakar.</p>
-                        </li>
+                        {[
+                            "Simpan dan tinjau sesi workout sebelumnya.",
+                            "Pantau perkembangan latihan dari waktu ke waktu.",
+                            "Riwayat rata-rata durasi latihan, intensitas, dan kalori terbakar.",
+                        ].map((text, index) => (
+                            <li key={index} className="flex items-start gap-3">
+                                <div className="min-w-6 mt-1">
+                                    <Image
+                                        src="/assets/image/check-circle-svgrepo-com.svg"
+                                        alt="check"
+                                        width={24}
+                                        height={24}
+                                        className="w-6 h-6 text-yellow-400"
+                                    />
+                                </div>
+                                <p>{text}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
