@@ -1,11 +1,20 @@
 import React from "react";
-
+import Image from "next/image";
 
 export default function Footer() {
     return (
         <footer className="bg-white pt-10">
             {/* Background Waves Image */}
-            <img src="./assets/image/waves.svg" alt="contour-line" className="w-full h-auto" />
+            <div className="w-full h-auto relative">
+                <Image 
+                    src="/assets/image/waves.svg" 
+                    alt="contour-line" 
+                    layout="intrinsic" 
+                    width={1920} // Sesuaikan dengan ukuran asli gambar
+                    height={0} // Bisa dihilangkan karena `h-auto` menangani tinggi otomatis
+                    className="w-full h-auto"
+                />
+            </div>
 
             {/* Footer Container */}
             <div style={{ backgroundColor: "#FFCB73" }} className="py-4">
@@ -18,6 +27,5 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-
     );
 }

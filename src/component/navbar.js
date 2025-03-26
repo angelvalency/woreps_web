@@ -1,46 +1,43 @@
-"use client";
-import React, { useState } from "react";
-import { useEffect } from "react";
+"use client"; // Pastikan ini ada agar kode hanya berjalan di client
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from 'next/image';
 
 export default function Navbar() {
     const [activeButton, setActiveButton] = useState("beranda");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const scrollToSection = (id) => {
-        const section = document.getElementById(id);
-        if (section) {
-            // Ambil tinggi navbar agar tidak tertutup
-            const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
-            const offset = navbarHeight + 20; // Beri jarak ekstra 20px
-            const top = section.getBoundingClientRect().top + window.scrollY - offset;
-    
-            // Scroll dengan smooth behavior
-            window.scrollTo({ top, behavior: "smooth" });
-    
-            // Perbarui hash tanpa reload
-            window.history.pushState(null, "", `#${id}`);
-    
-            setActiveButton(id);
-            setIsSidebarOpen(false);
+        if (typeof window !== "undefined") { // Pastikan ini berjalan hanya di client
+            const section = document.getElementById(id);
+            if (section) {
+                const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
+                const offset = navbarHeight + 20; 
+                const top = section.getBoundingClientRect().top + window.scrollY - offset;
+        
+                window.scrollTo({ top, behavior: "smooth" });
+                window.history.pushState(null, "", `#${id}`);
+        
+                setActiveButton(id);
+                setIsSidebarOpen(false);
+            }
         }
     };
 
     useEffect(() => {
-        const handleHashChange = () => {
-            const hash = window.location.hash.replace("#", "") || "beranda";
-            setActiveButton(hash);
-        };
+        if (typeof window !== "undefined") { // Pastikan kode ini hanya berjalan di client
+            const handleHashChange = () => {
+                const hash = window.location.hash.replace("#", "") || "beranda";
+                setActiveButton(hash);
+            };
 
-        // Cek hash saat first komponen load
-        handleHashChange();
-        
-        // event listener hash
-        window.addEventListener("hashchange", handleHashChange);
+            handleHashChange();
+            window.addEventListener("hashchange", handleHashChange);
 
-        return () => {
-            window.removeEventListener("hashchange", handleHashChange);
-        };
+            return () => {
+                window.removeEventListener("hashchange", handleHashChange);
+            };
+        }
     }, []);
 
     return (
@@ -50,31 +47,29 @@ export default function Navbar() {
             bg-gray-100/20 backdrop-blur-sm z-50 rounded-t-3xl
             ${isSidebarOpen ? "rounded-b-none shadow-none" : "rounded-3xl shadow-sm"}`}>
             
-                <img src="./assets/image/logo_baru.svg" alt="woreps logo" className="w-24 sm:w-32 h-auto" />
+                {/* Logo dengan Next.js Image */}
+                <div className="relative w-24 sm:w-32 h-auto">
+                    <Image 
+                        src="/assets/image/logo_baru.svg" 
+                        alt="woreps logo"
+                        width={96} // Sesuaikan ukuran logo
+                        height={96} 
+                        className="w-full h-auto"
+                    />
+                </div>
 
                 {/* Desktop Navbar */}
                 <div className="hidden md:flex space-x-4 mx-8">
-                    <a
-                        onClick={() => scrollToSection("beranda")}
-                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "beranda" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
-                    >
-                        Beranda
-                    </a>
-                    <a
-                        onClick={() => scrollToSection("tentang")}
-                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "tentang" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
-                    >
-                        Tentang
-                    </a>
-                    <a
-                        onClick={() => scrollToSection("fitur")}
-                        className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
-                        ${activeButton === "fitur" ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
-                    >
-                        Fitur
-                    </a>
+                    {["beranda", "tentang", "fitur"].map((item) => (
+                        <a
+                            key={item}
+                            onClick={() => scrollToSection(item)}
+                            className={`px-6 py-3 rounded-full transition-all duration-300 font-medium cursor-pointer
+                            ${activeButton === item ? "bg-orange-300 shadow-lg shadow-orange-100 text-white" : "text-gray-400"}`}
+                        >
+                            {item.charAt(0).toUpperCase() + item.slice(1)}
+                        </a>
+                    ))}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -86,35 +81,23 @@ export default function Navbar() {
                 </button>
             </nav>
 
-            {/* Mobile Dropdown Menu - Full Width Below Nav */}
-                { isSidebarOpen && (
-                    <div className="fixed top-18 left-0 right-0  w-full flex justify-center z-40 md:hidden animate-fade-in">
-                        <div className="w-11/12 max-w-sm bg-gray-100/20 backdrop-blur-sm rounded-b-3xl shadow-lg overflow-hidden">
+            {/* Mobile Dropdown Menu */}
+            {isSidebarOpen && (
+                <div className="fixed top-18 left-0 right-0 w-full flex justify-center z-40 md:hidden animate-fade-in">
+                    <div className="w-11/12 max-w-sm bg-gray-100/20 backdrop-blur-sm rounded-b-3xl shadow-lg overflow-hidden">
+                        {["beranda", "tentang", "fitur"].map((item) => (
                             <button
-                                onClick={() => scrollToSection("beranda")}
+                                key={item}
+                                onClick={() => scrollToSection(item)}
                                 className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
-                ${activeButton === "beranda" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
+                                ${activeButton === item ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
                             >
-                                Beranda
+                                {item.charAt(0).toUpperCase() + item.slice(1)}
                             </button>
-                            <button
-                                onClick={() => scrollToSection("tentang")}
-                                className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
-                ${activeButton === "tentang" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
-                            >
-                                Tentang
-                            </button>
-                            <button
-                                onClick={() => scrollToSection("fitur")}
-                                className={`w-full px-6 py-4 text-center transition-all duration-300 font-medium 
-                ${activeButton === "fitur" ? "bg-orange-300 text-white" : "bg-gray-100/20 backdrop-blur-sm text-gray-600"}`}
-                            >
-                                Fitur
-                            </button>
-                        </div>
+                        ))}
                     </div>
-                )}
-
+                </div>
+            )}
         </div>
     );
 }
