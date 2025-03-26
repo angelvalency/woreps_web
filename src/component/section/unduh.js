@@ -15,7 +15,9 @@ export default function UnduhSection() {
                 Woreps siap menemani perjalanan kebugaranmu agar tetap semangat dan konsisten!
             </p>
 
-            <button className="w-auto h-16 px-2 md:px-6 py-2 mt-12 bg-orange-300 text-white font-medium text-sm md:text-xl rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg shadow-orange-200 animate-bounce">
+            <button 
+             onClick={() => window.open("https://drive.google.com/file/d/1cAU7p_oHElYi7g1SffSZyDCWqko-wiHC/view?usp=sharing", "_blank")}
+             className="w-auto h-16 px-2 md:px-6 py-2 mt-12 bg-orange-300 text-white font-medium text-sm md:text-xl rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg shadow-orange-200 animate-bounce">
                 Download Sekarang !
             </button>
         </section>

@@ -33,15 +33,17 @@ export default function BerandaSection() {
 
                     {/* Download Button */}
                     <button
-                        href="#"
-                        style={{
-                            backgroundImage: "url('/assets/image/google-play-badge-logo-svgrepo-com.svg')",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                        }}
-                        className="w-40 h-16 text-white text-lg text-center rounded-sm font-medium hover:scale-105 transform transition-all duration-200"
-                    >
+                        onClick={() => window.open("https://drive.google.com/file/d/1cAU7p_oHElYi7g1SffSZyDCWqko-wiHC/view?usp=sharing", "_blank")}
+                        // style={{
+                        //     backgroundImage: "url('/assets/image/google-play-badge-logo-svgrepo-com.svg')",
+                        //     backgroundSize: "cover",
+                        //     backgroundPosition: "center",
+                        //     backgroundRepeat: "no-repeat",
+                        // }}
+                        // className="w-40 h-16 text-white text-lg text-center rounded-sm font-medium hover:scale-105 transform transition-all duration-200"
+                        // aria-label="Download via Google Play"
+                         className="w-32 sm:w-auto h-12 px-2 md:px-8 py-2 bg-black text-white font-medium text-xl md:text-2xl rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-md shadow-gray-200"
+                    > Download
                     </button>
 
                 </div>
